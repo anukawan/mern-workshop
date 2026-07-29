@@ -1,11 +1,16 @@
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import connectDb from './src/modules/config/db';
+import connectDb from './modules/config/db';
+import userRoutes from './modules/user/routes';
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(bodyParser);  //use-- application level middleware 
 app.use(express.json()); //use-- application level middleware
 app.use(express.urlencoded({ extended: true })); //use-- application level middleware
+app.use(userRoutes);
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!');

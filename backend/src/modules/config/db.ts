@@ -1,13 +1,15 @@
-import moongoose from "mongoose";
+import mongoose from "mongoose";
 import { MONGO_URL } from "../../environmentValidation";
 
 const connectDB = async () => {
-    try{
-        const conn = moongoose.connect(String(MONGO_URL));
-        console.log("mongo is running")
+  try {
+    const conn = await mongoose.connect(String(MONGO_URL));
 
-    } catch (dbError) {
-        console.log(dbError);
-    }
-}
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (dbError) {
+    console.error("MongoDB connection failed:", dbError);
+    process.exit(1);
+  }
+};
+
 export default connectDB;
