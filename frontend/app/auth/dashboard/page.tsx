@@ -20,7 +20,7 @@ export default function DashboardPage() {
           const parsedUser = JSON.parse(userData);
           const userId = parsedUser._id || parsedUser.id;
           if (userId) {
-            const response = await fetch(`/api/user/user/${userId}`);
+            const response = await fetch(`/api/users/user/${userId}`);
             if (!response.ok) {
               throw new Error('Failed to fetch user data');
             }
@@ -91,10 +91,7 @@ export default function DashboardPage() {
                     <p className="text-lg text-gray-700 dark:text-gray-300">
                       <span className="font-semibold">User ID:</span> {user._id}
                     </p>
-                    <p className="text-lg text-gray-700 dark:text-gray-300">
-                      <span className="font-semibold">Member since:</span>{' '}
-                      {new Date(user.createdAt).toLocaleDateString()}
-                    </p>
+                    
                   </div>
                 )}
                 <div className="mt-8">

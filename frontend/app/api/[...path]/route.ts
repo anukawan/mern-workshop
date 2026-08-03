@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
 
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:5005";
+console.log("BACKEND_URL:", BACKEND_URL);
 
 
 async function proxyRequest(request: NextRequest, method: string) {
  const path = request.nextUrl.pathname.replace("/api", "");
  const searchParams = request.nextUrl.searchParams.toString();
  const url = `${BACKEND_URL}${path}${searchParams ? `?${searchParams}` : ""}`;
+ console.log(`Proxying ${method} request to: ${url}`);
 
 
  const headers = new Headers(request.headers);

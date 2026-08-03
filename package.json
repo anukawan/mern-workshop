@@ -2,15 +2,26 @@
   "name": "mern",
   "version": "1.0.0",
   "description": "",
-  "repository": {
-    "type": "git",
-    "url": "https://anukawan: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/anukawan/mern-workshop.git"
-  },
   "license": "ISC",
   "author": "",
   "type": "commonjs",
   "main": "index.js",
+  "workspaces": [
+    "backend",
+    "frontend",
+    "shared"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "backend:dev": "npm run dev --workspace=backend",
+    "frontend:dev": "npm run dev --workspace=frontend"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "concurrently": "^10.0.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "jsonwebtoken": "^9.0.3"
   }
 }

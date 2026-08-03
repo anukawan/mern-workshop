@@ -11,7 +11,7 @@ export default function SuccessPage() {
 
  useEffect(() => {
    const timer = setTimeout(() => {
-     router.push('/dashboard');
+     router.push('/auth/dashboard');
    }, 2000);
 
 
@@ -47,7 +47,7 @@ export default function SuccessPage() {
        </div>
        <div className="mt-4">
          <button
-           onClick={() => router.push('/dashboard')}
+           onClick={() => router.push('/auth/dashboard')}
            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
          >
            Go to Dashboard
